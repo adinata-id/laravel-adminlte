@@ -13,11 +13,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('product/index');
+// });
 
-Route::get('/product')->name('product.index')->uses('ProductController@index');
+Route::get('/')->name('product.dashboard')->uses('ProductController@index');
+
+// Route::get('/product')->name('product.index')->uses('ProductController@index');
 
 Auth::routes();
 
