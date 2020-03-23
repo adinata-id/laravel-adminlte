@@ -20,5 +20,9 @@
         "resolve-url-loader": "^3.1.0",
         "sass": "^1.15.2",
         "sass-loader": "^8.0.0"
+    },
+    "dependencies": {
+        "acorn": "^7.1.1",
+        "minimist": "^1.2.5"
     }
 }
