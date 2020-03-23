@@ -13,7 +13,7 @@ Untuk Melakukan Instalasi Laravel-AdminLTE SBB :
 -lalu copy file .env dari laptop anda ( bisa pakai .env default laravel ) ke server jika anda deploy ke server jika tidak cukup buat di laptop / pc anda...
 
 ## Dapatkan Tips Seputar Pemograman DI Blog Saya :
-- [Blog Saya](https://adinata.id).
+- [Blog Saya : www.adinata.id](https://adinata.id).
 
 ## Salam Adinata
 
