@@ -17,10 +17,10 @@ use Illuminate\Support\Facades\Route;
 //     return view('product/index');
 // });
 
-Route::get('/')->name('product.dashboard')->uses('ProductController@index');
+ Route::get('/')->name('home.index')->uses('HomeController@index');
 
-// Route::get('/product')->name('product.index')->uses('ProductController@index');
+Route::get('/product')->name('product.index')->uses('ProductController@index');
 
-Auth::routes();
+// Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+// Route::get('/home', 'HomeController@index')->name('home');

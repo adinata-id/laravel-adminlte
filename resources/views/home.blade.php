@@ -1,7 +1,19 @@
-@extends('layouts.app')
+@extends('layouts.app2')
 
 @section('content')
-<div class="container">
+    <!-- Content Header (Page header) -->
+    <div class="content-header">
+        <div class="container-fluid">
+          <div class="row mb-2">
+            <div class="col-sm-6">
+              <h1 class="m-0 text-dark">Ini Halaman Home</h1>
+            </div><!-- /.col -->
+          </div><!-- /.row -->
+        </div><!-- /.container-fluid -->
+      </div>
+
+
+{{-- <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
@@ -19,5 +31,5 @@
             </div>
         </div>
     </div>
-</div>
+</div> --}}
 @endsection
