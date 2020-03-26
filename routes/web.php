@@ -20,6 +20,8 @@ use Illuminate\Support\Facades\Route;
  Route::get('/')->name('home.index')->uses('HomeController@index');
 
 Route::get('/product')->name('product.index')->uses('ProductController@index');
+Route::get('/yajra')->name('yajra.index')->uses('ProductController@datatablesIndex');
+
 
 // Auth::routes();
 

@@ -83,4 +83,14 @@ class ProductController extends Controller
     {
         //
     }
+
+    public function datatables()
+    {
+        return datatables ( Product::all())->toJson();
+    }
+
+    public function datatablesIndex() 
+    {
+        return view ('product/datatables');   
+    }
 }

@@ -15,5 +15,12 @@ Untuk Melakukan Instalasi Laravel-AdminLTE SBB :
 ## Dapatkan Tips Seputar Pemograman DI Blog Saya :
 - [Blog Saya : www.adinata.id](https://adinata.id).
 
-## Salam Adinata
+## Fitur Demo Yang Terdapat Di Aplikasi ini : 
+- [Integrasi Dengan Jquery Datatables :](https://adinata.id/laravel/integrasi-laravel-dengan-jquery-datables-adminlte).
+
+
+## Semoga Bermanfaat 
+## Salam, 
+
+## Adinata
 
