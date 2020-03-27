@@ -2,6 +2,8 @@
 @section('styles')
 <!-- DataTables -->
 <link rel="stylesheet" href="{{url('AdminLTE/plugins/datatables-bs4/css/dataTables.bootstrap4.css') }}">
+<link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.6.1/css/buttons.dataTables.min.css">
+
 @endsection
 
 @section('content')
@@ -58,9 +60,26 @@
 <!-- DataTables -->
 <script src="{{url('AdminLTE/plugins/datatables/jquery.dataTables.js') }}"></script>
 <script src="{{url('AdminLTE/plugins/datatables-bs4/js/dataTables.bootstrap4.js') }}"></script>
+<script src="https://cdn.datatables.net/buttons/1.6.1/js/dataTables.buttons.min.js"> </script>
+<script src="https://cdn.datatables.net/buttons/1.6.1/js/buttons.colVis.min.js"> </script>
+
 <script> 
-    var table = $('#table-product').DataTable({
-        ajax: "{{ route ('api.product') }}",
+    $(document).ready(function(){
+        var table = $('#table-product').DataTable({
+        pageLength: 25,
+        processing: true,
+        serverSide: true,
+        dom: '<"html5buttons"B>lTfgitp', //DOM Untuk Button
+        language: {
+                buttons: {
+                    colvis : 'show / hide', // label button show / hide
+                    colvisRestore: "Reset Kolom" //lael untuk reset kolom ke default
+                }
+        },
+        buttons : [
+                    {extend: 'colvis', postfixButtons: [ 'colvisRestore' ] },
+        ],
+        ajax: "{{ route ('api.product') }}", 
         columns: [
             {"data":"name"},
             {"data":"satuan"},
@@ -68,6 +87,8 @@
             {"data":"sell_price"},
         ],
     });
+    });
+    
 </script>
 
 @endsection
