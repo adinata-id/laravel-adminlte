@@ -98,9 +98,17 @@
             {"data":"buy_price"},
             {"data":"sell_price"},
         ],
+        columnDefs : [{
+            render : function (data,type,row){
+                return data + ' - ( ' + row['satuan'] + ')'; 
+            },
+            "targets" : 0
+            },
+            {"visible": false, "targets" : 1}
+        ]
+        });
+        
     });
-    });
-    
 </script>
 
 @endsection
