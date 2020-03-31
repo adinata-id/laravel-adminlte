@@ -43,9 +43,33 @@
                                     <th> Satuan </th>
                                     <th> Harga Beli </th>
                                     <th> Harga Jual </th>
+                                    <th> Create At </th>
 
                                 </tr>
                                 </thead>
+                                <div class="panel-body">
+                                    <label for="name"> Filter Berdasarkan Nama Product: </label>
+                                    <input type="text" name="name" class="form-control col-sm-4 filter-name" placeholder="Filter Berdasarkan Nama Product">
+                                    
+                                    <label for="filter-satuan"> Filter Berdasarkan Satuan : </label>
+                                    
+                                    <select data-column="1" class="form-control col-sm-4 filter-satuan" placeholder="Filter Berdasarkan Satuan Product">
+                                        <option value=""> Pilih Satuan Product </option>
+                                        <option value="kg"> KG </option>
+                                        <option value="ton"> TON </option>
+                                    </select>
+
+                                    <label for="filter-periode"> Filter Berdasarkan Periode : </label>
+
+                                    <select name="filter_periode" id="filter_periode" class="form-control">
+                                        <option value=""> Pilih Periode </option>
+                                        <option value="7"> 7 Hari Terakhir </option>
+                                        <option value="14"> 14 Hari Terakhir </option>
+                                        <option value="21"> 21 Hari Terakhir </option>
+                                        <option value="31"> 31 Hari Terakhir </option>
+                                        <option value="365"> 365 Hari Terakhir </option>
+                                    </select>
+                                    <br /> <br />
                                 <tbody>
                                 </tbody>
                             </table>
@@ -73,7 +97,7 @@
 <script> 
     $(document).ready(function(){
         var table = $('#table-product').DataTable({
-        pageLength: 25,
+        pageLength: 10,
         processing: true,
         serverSide: true,
         dom: '<"html5buttons">Blfrtip',
@@ -91,12 +115,18 @@
                     {extend: 'excel', title: 'Contoh File Excel Datatables'},
                     {extend:'print',title: 'Contoh Print Datatables'},
         ],
-        ajax: "{{ route ('api.product') }}", 
+        ajax: {
+            "url"  : "{{ route ('api.product') }}", 
+            "data" : function (d) {
+                    d.filter_periode = $('#filter_periode').val();
+            }
+        },
         columns: [
             {"data":"name"},
             {"data":"satuan"},
             {"data":"buy_price"},
             {"data":"sell_price"},
+            {"data":"created_at"},
         ],
         columnDefs : [{
             render : function (data,type,row){
@@ -105,9 +135,30 @@
             "targets" : 0
             },
             {"visible": false, "targets" : 1}
-        ]
+        ],
+
         });
         
+    //filter berdasarkan Nama Product
+    $('.filter-name').keyup(function () {
+        table.column( $(this).data('column'))
+        .search( $(this).val() )
+        .draw();
+    });
+
+    //filter Berdasarkan satuan product
+    $('.filter-satuan').change(function () {
+        table.column( $(this).data('column'))
+        .search( $(this).val() )
+        .draw();
+    });
+
+    //filter Berdasarkan periode
+    $('#filter_periode').change(function () {
+        table.draw();
+    });
+
+
     });
 </script>
 

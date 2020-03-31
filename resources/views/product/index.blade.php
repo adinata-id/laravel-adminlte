@@ -40,6 +40,7 @@
                                     <th> Satuan </th>
                                     <th> Harga Beli </th>
                                     <th> Harga Jual </th>
+                                    <th> Created At </th>
 
                                 </tr>
                                 </thead>
@@ -50,6 +51,7 @@
                                         <td>{{ $product->satuan }}</td>
                                         <td>{{ $product->buy_price }}</td>
                                         <td>{{ $product->sell_price }}</td>
+                                        <td>{{ $product->created_at }}</td>
                                     </tr>
                                     @endforeach
                                 </tbody>
