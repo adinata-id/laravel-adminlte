@@ -14,8 +14,9 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = Product::all(['id','name','satuan','buy_price','sell_price','created_at']);
-        return view ('product/index', compact('products'));   
+        $products = Product::all(['id', 'name', 'satuan', 'buy_price', 'sell_price', 'created_at'])
+            ->sortBy('id');
+        return view('product/index', compact('products'));
     }
 
     /**
@@ -86,16 +87,17 @@ class ProductController extends Controller
 
     public function datatables()
     {
-        $query = Product::select('id','name','satuan','buy_price','sell_price','created_at');
-                if (request('filter_periode')) {
-                    $filter_periode = now()->subDays(request ('filter_periode'))->toDateString();                    
-                    $query->where('created_at','>=', $filter_periode);
-                }
-        return datatables ($query)->toJson();
+        $query = Product::select('id', 'name', 'satuan', 'buy_price', 'sell_price', 'created_at')->orderBy('id');
+        if (request('filter_periode')) {
+            $filter_periode = now()->subDays(request('filter_periode'))->toDateString();
+            $query->where('created_at', '>=', $filter_periode);
+        }
+
+        return datatables($query)->toJson();
     }
 
-    public function datatablesIndex() 
+    public function datatablesIndex()
     {
-        return view ('product/datatables');   
+        return view('product/datatables');
     }
 }
